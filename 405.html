@@ -1,40 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>您走丢了啊</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        svg {
-            width: 100px;
-            height: 100px;
-            animation: bounce 2s infinite alternate;
-        }
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-20px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 设置 body 的样式，使其居中显示 */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* 设置 h1 的样式，使其显示为红色 */
+    h1 {
+      color: red;
+      font-size: 36px;
+    }
+
+    /* 设置 svg 的样式，使其有一定的大小和边距 */
+    svg {
+      width: 300px;
+      height: 300px;
+      margin: 20px;
+    }
+
+    /* 设置飞碟的动画，使其从左下角飞到右上角，并旋转 */
+    .ufo {
+      animation: fly 3s linear infinite;
+    }
+
+    @keyframes fly {
+      from {
+        transform: translate(-150px, 150px) rotate(0deg);
+      }
+      to {
+        transform: translate(150px, -150px) rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="yellow" stroke="black" stroke-width="2" />
-        <circle cx="40" cy="40" r="5" fill="black" />
-        <circle cx="60" cy="40" r="5" fill="black" />
-        <path d="M40 60 Q50 70 60 60" fill="none" stroke="black" stroke-width="2" />
-    </svg>
-    <p>哎呀，您走丢了啊。要不然去找找管理员问问呀？</p >
+  <!-- 显示文字内容 -->
+  <h1>当前链接已过期了</h1>
+  <!-- 显示动态的飞碟飞走的动态 svg 图形 -->
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- 绘制飞碟的主体，一个椭圆 -->
+    <ellipse cx="50" cy="50" rx="40" ry="10" fill="#ccc" />
+    <!-- 绘制飞碟的顶部，一个圆 -->
+    <circle cx="50" cy="40" r="15" fill="#999" />
+    <!-- 绘制飞碟的窗户，一个半圆 -->
+    <path d="M 35 40 A 15 15 0 0 1 65 40" fill="#fff" />
+    <!-- 绘制飞碟的光束，一个渐变的多边形 -->
+    <defs>
+      <!-- 定义一个线性渐变，从黄色到透明 -->
+      <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="yellow" />
+        <stop offset="100%" stop-color="transparent" />
+      </linearGradient>
+    </defs>
+    <!-- 使用渐变填充多边形 -->
+    <polygon points="40,50 60,50 80,100 20,100" fill="url(#beam)" />
+    <!-- 给整个飞碟添加动画类名 -->
+    <g class="ufo"></g>
+  </svg>
 </body>
 </html>
